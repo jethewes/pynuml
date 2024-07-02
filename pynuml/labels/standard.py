@@ -114,10 +114,6 @@ class StandardLabels:
                         else:
                             sl = self.diffuse
                             slc = self.diffuse
-                    elif part.start_process == 'eBrem' or part.end_process == 'phot' \
-                        or part.end_process == 'photonNuclear' or part.end_process == 'eIoni':
-                        sl = self.diffuse
-                        slc = None
                     elif part.start_process == 'muIoni' or part.start_process == 'hIoni' \
                         or part.start_process == 'eIoni':
                         if part.start_process == 'muIoni':
@@ -133,6 +129,10 @@ class StandardLabels:
                         else:
                             sl = self.diffuse
                             slc = None
+                    elif part.start_process == 'eBrem' or part.end_process == 'phot' \
+                        or part.end_process == 'photonNuclear' or part.end_process == 'eIoni':
+                        sl = self.diffuse
+                        slc = None
                     elif part.end_process == 'StepLimiter' or part.end_process == 'annihil' \
                         or part.end_process == 'eBrem' or part.start_process == 'hBertiniCaptureAtRest' \
                         or part.end_process == 'FastScintillation' or part.start_process == 'muPairProd' \
