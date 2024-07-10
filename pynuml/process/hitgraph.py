@@ -224,6 +224,10 @@ class HitGraphProducer(ProcessorBase):
         edge2 = torch.tensor(sum_pe[['sumpe_id', 'flash_id']].values.transpose())
         data['opflashsumpe', 'flash', 'opflash'].edge_index = edge2.long()
 
+        # 3rd hierarchical layer
+        edge3 = torch.tensor([opflash['flash_id'].values[0], 0])
+        data['opflash', 'in', 'evt'].edge_index = edge3
+
         # event label
         if self.event_labeller:
             data['evt'].y = torch.tensor(self.event_labeller(event)).long()
